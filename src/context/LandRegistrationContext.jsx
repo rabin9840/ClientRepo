@@ -22,6 +22,7 @@ export const LandRegistrationContext = React.createContext();
 	
 	export const LandRegistrationProvider = ({children}) => {
 	    const [currentAccount, setCurrentAccount]=useState("");
+		const[dataRegistered,setDataRegistered]= useState(false);
 	    const [formData, setFormData] = useState({
 	        area: 0,
 	        city: '',
@@ -169,6 +170,7 @@ export const LandRegistrationContext = React.createContext();
 	          const additionUser= await testContract.addUser(name,age,city,citizenShipNumber,email,document);
 	          console.log("success");
 	          console.log(additionUser);
+			  setDataRegistered(true);
 	          
 	        } catch (error) {
 	          console.log(error);
@@ -782,7 +784,7 @@ export const LandRegistrationContext = React.createContext();
 	
 	    return(
 	      // <LandRegistrationContext.Provider value={{connectWallet,currentAccount,formData,setFormData,handleChange,sendTransaction,getAllLand}}>
-	      <LandRegistrationContext.Provider value={{connectWallet,currentAccount,checkAdmin,isAdmin,addUserTo,formData,userData,setFormData,setUserData,handleChange,handleUserChange, getUserInfo,getUserData,usersInfo,checkUserVerification,checkUserVerified,checkUser,verifyTheUser,handleVerify,addLandTo,getAllLands,getUserAllData,landsInfo,verifyUserLand,checkLand,viewUserInfo,checkPayment,userDetails,setUserDetails,checkLandVerified,verifyTheLand,requestThisLand,getAllLand,approveRequest,requestInfo,getAllRequests,transferLand,getApprovedRequests,isLandTransfer}}>
+	      <LandRegistrationContext.Provider value={{connectWallet,currentAccount,checkAdmin,isAdmin,addUserTo,dataRegistered,formData,userData,setFormData,setUserData,handleChange,handleUserChange, getUserInfo,getUserData,usersInfo,checkUserVerification,checkUserVerified,checkUser,verifyTheUser,handleVerify,addLandTo,getAllLands,getUserAllData,landsInfo,verifyUserLand,checkLand,viewUserInfo,checkPayment,userDetails,setUserDetails,checkLandVerified,verifyTheLand,requestThisLand,getAllLand,approveRequest,requestInfo,getAllRequests,transferLand,getApprovedRequests,isLandTransfer}}>
 	            {children}
 	        </LandRegistrationContext.Provider>
 	    )

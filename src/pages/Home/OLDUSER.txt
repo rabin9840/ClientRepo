@@ -9,12 +9,10 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import { useEffect } from "react";
-import { useState } from "react";
 
 const User = () => {
     const {connectWallet, isAdmin,currentAccount} = useContext(LandRegistrationContext);
-    const {addUserTo, userData, handleUserChange,checkAdmin,dataRegistered} = useContext(LandRegistrationContext);
-
+    const {addUserTo, userData, handleUserChange,checkAdmin} = useContext(LandRegistrationContext);
     // const handleUserSubmit = (e) => {
     //     const {name, age, city, citizenShipNumber, email, document } = userData;
     //     e.preventDefault();
@@ -34,10 +32,12 @@ const User = () => {
         e.preventDefault();
         console.log(userData);
             addUserTo();
-            console.log(userData);
       }
 
-    if(!checkAdmin()){
+
+    // useEffect(()=>{
+    //     checkAdmin();
+    // },[]);
 
     return (
         <Card color="transparent" shadow={false} className="content-center">
@@ -94,13 +94,32 @@ const User = () => {
                 <Button className="mt-6" onClick={handleUserSubmit} fullWidth>
                     Register
                 </Button>
+                <Typography color="gray" className="mt-4 text-center font-normal">
+                    --Or--
+                </Typography>
+                {!currentAccount && (
+	                <Button color="amber" className="flex items-center gap-3" onClick={connectWallet} fullWidth>
+					    <img src="/src/metamask.svg" alt="metamask" className="h-6 w-6" />
+	            	    Connect with Metamask
+	                </Button>
+	            )}
+	
+	        {(currentAccount) && (
+	            <Button color="blue" className="flex items-center gap-3" onClick={checkAdmin} fullWidth>
+	            	<img src="/src/checkmark.svg" alt="checkmark" className="h-6 w-6" />
+					Check if admin
+	            </Button>
+	        )}
+	
+	        {/* {!isAdmin && (
+	           <Navigate to='/userDash'></Navigate>
+	        )} */}
 
-            {dataRegistered && (
+            {!checkAdmin() && (
 	           <Navigate to='/userDash'></Navigate>
 	        )}
             </form>
         </Card>
     );
-            }
 }
 export default User;
