@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.3;
+  }
+  body {
+    background-image: url('bg-img.jpg')
+  }
+  table {
+  }
+  th,
+  td {
+    @apply py-3 px-2.5 text-sm text-left border-y border-gray-200;
+  }
+  thead {
+    @apply bg-neutral-100;
+  }
+  th {
+    @apply font-semibold;
+  }
+  a {
+    @apply text-sky-500 hover:underline;
+  }
+
+  .title,
+  .section-title {
+    @apply text-6xl lg:text-8xl mb-6 font-bold;
+  }
+  .h2 {
+    @apply text-5xl lg:text-7xl font-bold;
+  }
+  /* .pretitle {
+    @apply text-lg lg:text-[22px] text-light mb-4 lg:mb-6 uppercase font-normal;
+  } */
+  /* .lead {
+    @apply text-2xl text-light font-normal mb-6;
+  } */
+  /* .link {
+    @apply text-lg text-dark;
+  } */
+  .section {
+    @apply py-8 lg:py-[142px];
+  }
+  /* .btn {
+    @apply rounded-lg transition flex justify-center items-center;
+  }
+  .btn-lg {
+    @apply h-[75px] px-6 text-2xl font-normal;
+  }
+  .btn-md {
+    @apply h-[60px] px-[16px] text-lg font-normal;
+  }
+  .btn-sm {
+    @apply h-[48px] px-[16px] text-lg font-normal;
+  }
+  .btn-accent {
+    @apply text-white bg-accent hover:bg-accentHover;
+  }
+  .btn-white {
+    @apply text-accent bg-white hover:bg-white/90;
+  }
+  .btn-outline {
+    @apply bg-transparent text-accent border border-accent hover:bg-accent hover:text-white;
+  }
+  .btn-link {
+    @apply text-accent text-xl lg:text-2xl;
+  } */
+}
