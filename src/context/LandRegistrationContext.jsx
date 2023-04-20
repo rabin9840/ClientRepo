@@ -144,7 +144,7 @@ export const LandRegistrationContext = React.createContext();
 	          // await transactionHash.wait();
 	          // setisLoading(false);
 	          // console.log(`Success: ${transactionHash.hash}`)
-	          if(checkAdmin){
+	          if(checkIfAdmin){
 				console.log('IS ADMIN CALLED TRUE');
 	            setIsAdmin(true);
 				

@@ -8,16 +8,36 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
+import { useEffect } from "react";
 
 const User = () => {
     const {connectWallet, isAdmin,currentAccount} = useContext(LandRegistrationContext);
     const {addUserTo, userData, handleUserChange,checkAdmin} = useContext(LandRegistrationContext);
+    // const handleUserSubmit = (e) => {
+    //     const {name, age, city, citizenShipNumber, email, document } = userData;
+    //     e.preventDefault();
+    //     console.log(userData);
+    //     checkAdmin();
+    //     if(checkAdmin){
+    //         console.log("the person is admin");
+
+    //     }
+    //     else{
+    //         addUserTo();
+    //     }
+       
+    //   }
     const handleUserSubmit = (e) => {
         const {name, age, city, citizenShipNumber, email, document } = userData;
         e.preventDefault();
         console.log(userData);
-        addUserTo();
+            addUserTo();
       }
+
+
+    // useEffect(()=>{
+    //     checkAdmin();
+    // },[]);
 
     return (
         <Card color="transparent" shadow={false} className="content-center">
@@ -91,7 +111,11 @@ const User = () => {
 	            </Button>
 	        )}
 	
-	        {!isAdmin && (
+	        {/* {!isAdmin && (
+	           <Navigate to='/userDash'></Navigate>
+	        )} */}
+
+            {!checkAdmin() && (
 	           <Navigate to='/userDash'></Navigate>
 	        )}
             </form>
