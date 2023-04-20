@@ -16,7 +16,7 @@ export default function UserIndex() {
             <Route path='addland' element={<AddLand />} />
             <Route path='mylands' element={<MyLands />} />
             <Route path='requestland' element={<RequestLand />} />
-            <Route path='approve' element={<Approve />} />
+            <Route path='Approve' element={<Approve />} />
           </Route>
         </Routes>
 
