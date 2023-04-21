@@ -11,7 +11,7 @@ import {
 
 const User = () => {
     const {connectWallet, isAdmin,currentAccount,setIsAdmin} = useContext(LandRegistrationContext);
-    const {addUserTo, userData, handleUserChange,dataRegistered,checkUser,checkAdmin,checkAdminButton} = useContext(LandRegistrationContext);
+    const {addUserTo, userData, handleUserChange,dataRegistered,checkUser,checkAdmin,checkAdminButton,isUser} = useContext(LandRegistrationContext);
     // const [checkAdminButton,setCheckAdminButton]=useState(false);
 
     // const handleUserSubmit = (e) => {
@@ -111,6 +111,22 @@ const User = () => {
                        <Navigate to='/userDash'></Navigate>
                     )}
                     </form>
+
+                    <div>
+                        
+                    <Button className="mt-6" onClick={checkUser} fullWidth>
+                            Login
+                    </Button>
+                    {
+                        isUser && (
+                            <Navigate to='/userDash'></Navigate>
+                        )
+
+                    }
+
+                    </div>
+
+
                 </Card>
          )
 

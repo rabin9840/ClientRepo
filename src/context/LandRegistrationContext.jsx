@@ -46,6 +46,8 @@ export const LandRegistrationContext = React.createContext();
 	    const [usersInfo, setUsersInfo] = useState([]);
 	
 	    const [isAdmin, setIsAdmin] = useState(false);
+
+		const [isUser, setIsUser] = useState(false);
 	
 	    const [userTransaction, setUserTransaction] = useState([]);
 	
@@ -280,11 +282,10 @@ export const LandRegistrationContext = React.createContext();
 	          const testContract= getEthereumContract();
 	          console.log("contract retrieved");
 	          console.log("current account :"+currentAccount);
-	          const isUser= await testContract.isUser(currentAccount);
+	          const isContractUser= await testContract.isUser(currentAccount);
 	          console.log("checking operation performed");
-	          console.log(isUser);
-	
-	          
+	          console.log("isContract user"+isContractUser);
+			  setIsUser(isContractUser);
 	        } catch (error) {
 	          console.log(error);
 	          
@@ -788,7 +789,7 @@ export const LandRegistrationContext = React.createContext();
 	
 	    return(
 	      // <LandRegistrationContext.Provider value={{connectWallet,currentAccount,formData,setFormData,handleChange,sendTransaction,getAllLand}}>
-	      <LandRegistrationContext.Provider value={{checkAdminButton,connectWallet,currentAccount,checkAdmin,isAdmin,addUserTo,dataRegistered,formData,userData,setFormData,setUserData,handleChange,handleUserChange, getUserInfo,getUserData,usersInfo,checkUserVerification,checkUserVerified,checkUser,verifyTheUser,handleVerify,addLandTo,getAllLands,getUserAllData,landsInfo,verifyUserLand,checkLand,viewUserInfo,checkPayment,userDetails,setUserDetails,checkLandVerified,verifyTheLand,requestThisLand,getAllLand,approveRequest,requestInfo,getAllRequests,transferLand,getApprovedRequests,isLandTransfer}}>
+	      <LandRegistrationContext.Provider value={{checkAdminButton,isUser,connectWallet,currentAccount,checkAdmin,isAdmin,addUserTo,dataRegistered,formData,userData,setFormData,setUserData,handleChange,handleUserChange, getUserInfo,getUserData,usersInfo,checkUserVerification,checkUserVerified,checkUser,verifyTheUser,handleVerify,addLandTo,getAllLands,getUserAllData,landsInfo,verifyUserLand,checkLand,viewUserInfo,checkPayment,userDetails,setUserDetails,checkLandVerified,verifyTheLand,requestThisLand,getAllLand,approveRequest,requestInfo,getAllRequests,transferLand,getApprovedRequests,isLandTransfer}}>
 	            {children}
 	        </LandRegistrationContext.Provider>
 	    )
