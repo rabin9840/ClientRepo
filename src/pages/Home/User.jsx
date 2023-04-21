@@ -13,7 +13,7 @@ import { useState } from "react";
 
 const User = () => {
     const {connectWallet, isAdmin,currentAccount} = useContext(LandRegistrationContext);
-    const {addUserTo, userData, handleUserChange,checkAdmin,dataRegistered} = useContext(LandRegistrationContext);
+    const {addUserTo, userData, handleUserChange,checkAdmin,dataRegistered,checkUser} = useContext(LandRegistrationContext);
 
     // const handleUserSubmit = (e) => {
     //     const {name, age, city, citizenShipNumber, email, document } = userData;
@@ -37,7 +37,11 @@ const User = () => {
             console.log(userData);
       }
 
-    if(!checkAdmin()){
+
+      // NEED AND EXTRA PAGE FOR LOGIN BY USER WHEN VERIFIED
+
+      // LOAD THIS PAGE WHEN THE USER IS NOT ADMIN AND NOT REGISTERED IN THE BLOCKCHAIN
+    if(!checkAdmin() && !checkUser()){
 
     return (
         <Card color="transparent" shadow={false} className="content-center">
@@ -101,6 +105,11 @@ const User = () => {
             </form>
         </Card>
     );
-            }
+    }
+
+    // IF USER REGISTERED AND NOT ADMIN THEN DIRECTLY TO USERDASH BOARD
+    if(!checkAdmin() && checkUser()){
+        <Navigate to='/userDash'></Navigate>
+    }
 }
 export default User;
