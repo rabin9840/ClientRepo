@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Navigate } from 'react-router-dom';
-// import LandRegistrationContext from '../../context/LandRegistrationContext';
 import {LandRegistrationContext} from '../../context/LandRegistrationContext';
 import {
     Card,
@@ -8,10 +7,7 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { ethers } from "ethers";
-import { contractABI, contractAddress } from "../../utils/constants";
+
 
 const User = () => {
     const {connectWallet, isAdmin,currentAccount,setIsAdmin} = useContext(LandRegistrationContext);
