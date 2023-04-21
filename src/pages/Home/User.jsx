@@ -10,10 +10,13 @@ import {
 } from "@material-tailwind/react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { ethers } from "ethers";
+import { contractABI, contractAddress } from "../../utils/constants";
 
 const User = () => {
-    const {connectWallet, isAdmin,currentAccount} = useContext(LandRegistrationContext);
-    const {addUserTo, userData, handleUserChange,checkAdmin,dataRegistered,checkUser} = useContext(LandRegistrationContext);
+    const {connectWallet, isAdmin,currentAccount,setIsAdmin} = useContext(LandRegistrationContext);
+    const {addUserTo, userData, handleUserChange,dataRegistered,checkUser,checkAdmin,checkAdminButton} = useContext(LandRegistrationContext);
+    // const [checkAdminButton,setCheckAdminButton]=useState(false);
 
     // const handleUserSubmit = (e) => {
     //     const {name, age, city, citizenShipNumber, email, document } = userData;
@@ -29,6 +32,7 @@ const User = () => {
     //     }
        
     //   }
+
     const handleUserSubmit = (e) => {
         const {name, age, city, citizenShipNumber, email, document } = userData;
         e.preventDefault();
@@ -41,75 +45,89 @@ const User = () => {
       // NEED AND EXTRA PAGE FOR LOGIN BY USER WHEN VERIFIED
 
       // LOAD THIS PAGE WHEN THE USER IS NOT ADMIN AND NOT REGISTERED IN THE BLOCKCHAIN
-    if(!checkAdmin() && !checkUser()){
+    // if(!checkAdmin()){
 
     return (
-        <Card color="transparent" shadow={false} className="content-center">
-            <Typography variant="h4" color="blue-gray">
-                User Registration
-            </Typography>
-            
-            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-                <div className="mb-4 flex flex-col gap-6">
-                    <Input
-                        type="text"
-                        name="name"
-                        label="Name"
-                        onChange={handleUserChange}
-                    />
-                    <Input
-                        type="number"
-                        name="age"
-                        label="Age"
-                        onChange={handleUserChange}
-                    />
-                    <Input
-                        type="text"
-                        name="city"
-                        label="City"
-                        onChange={handleUserChange}
-                    />
-                    <Input
-                        type="text"
-                        name="citizenShipNumber"
-                        label="Citizenship Number"
-                        onChange={handleUserChange}
-                    />
-                    <Input
-                        type="email"
-                        name="email"
-                        label="Email"
-                        onChange={handleUserChange}
-                    />
-                    <Input
-                        type="text"
-                        name="panNum"
-                        label="Pan Number"
-                        onChange={handleUserChange}
-                    />
-                    <Input
-                        type="text"
-                        name="surveyNumber"
-                        label="Survey Number"
-                        onChange={handleUserChange}
-                    />
-                </div>
-                
-                <Button className="mt-6" onClick={handleUserSubmit} fullWidth>
-                    Register
-                </Button>
+        <>
 
-            {dataRegistered && (
-	           <Navigate to='/userDash'></Navigate>
-	        )}
-            </form>
-        </Card>
+        { !isAdmin &&
+         (           <Card color="transparent" shadow={false} className="content-center">
+                    <Typography variant="h4" color="blue-gray">
+                        User Registration
+                    </Typography>
+                    
+                    <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                        <div className="mb-4 flex flex-col gap-6">
+                            <Input
+                                type="text"
+                                name="name"
+                                label="Name"
+                                onChange={handleUserChange}
+                            />
+                            <Input
+                                type="number"
+                                name="age"
+                                label="Age"
+                                onChange={handleUserChange}
+                            />
+                            <Input
+                                type="text"
+                                name="city"
+                                label="City"
+                                onChange={handleUserChange}
+                            />
+                            <Input
+                                type="text"
+                                name="citizenShipNumber"
+                                label="Citizenship Number"
+                                onChange={handleUserChange}
+                            />
+                            <Input
+                                type="email"
+                                name="email"
+                                label="Email"
+                                onChange={handleUserChange}
+                            />
+                            <Input
+                                type="text"
+                                name="panNum"
+                                label="Pan Number"
+                                onChange={handleUserChange}
+                            />
+                            <Input
+                                type="text"
+                                name="surveyNumber"
+                                label="Survey Number"
+                                onChange={handleUserChange}
+                            />
+                        </div>
+                        <Button className="mt-6" onClick={checkAdmin} fullWidth>
+                            Check Admin
+                        </Button>
+                        {checkAdminButton && !isAdmin &&(
+                        <Button className="mt-6" onClick={handleUserSubmit} fullWidth>
+                            Register
+                        </Button>
+                        )
+                        }
+        
+                    {dataRegistered && (
+                       <Navigate to='/userDash'></Navigate>
+                    )}
+                    </form>
+                </Card>
+         )
+
+        }
+       
+
+        </>
     );
-    }
+    // }
 
     // IF USER REGISTERED AND NOT ADMIN THEN DIRECTLY TO USERDASH BOARD
-    if(!checkAdmin() && checkUser()){
-        <Navigate to='/userDash'></Navigate>
-    }
+    // if(!checkAdmin() && checkUser()){
+    //     <Navigate to='/userDash'></Navigate>
+    // }
 }
 export default User;

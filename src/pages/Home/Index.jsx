@@ -15,6 +15,7 @@ import VerifyLand from '../Dashboard/LIPDashboard/VerifyLand';
 import TransferOwnership from '../Dashboard/LIPDashboard/TransferOwnership';
 
 
+
 export default function Index() {
   // initialize aos
   Aos.init({
