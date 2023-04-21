@@ -14,7 +14,7 @@ const UserCard = ({name,age,city,citizenShipNumber,email,userAccount,isVerified}
 							<th>City</th>
 							<th>Citizenship No.</th>
 							<th>Email</th>
-							<th>Address</th>
+							<th>Age</th>
 							<th>Action</th>
 							<th>Confirmation Status</th>
 						</tr>
@@ -25,7 +25,7 @@ const UserCard = ({name,age,city,citizenShipNumber,email,userAccount,isVerified}
 							<th>{city}</th>
 							<th>{citizenShipNumber}</th>
 							<th>{email}</th>
-							<th>{address}</th>
+							<th>{parseInt(age)}</th>
 							<th><button onClick={() => {
 									verifyTheUser(userAccount,isVerified)}}
 								>

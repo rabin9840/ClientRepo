@@ -565,6 +565,7 @@ export const LandRegistrationContext = React.createContext();
 	
 	
 	          console.log("checking operation performed");
+			  
 	
 	          
 	        } catch (error) {
