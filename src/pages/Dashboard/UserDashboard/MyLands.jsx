@@ -12,7 +12,7 @@ export default function MyLands() {
         <div>
             <div>
                 <h1>View Your Land Information:</h1>
-                <button onClick={getAllLands}>View owned lands</button>
+                <button onClick={getAllLand}>View owned lands</button>
             </div>
             <div>
                 {

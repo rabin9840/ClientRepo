@@ -30,13 +30,13 @@ const LandVerifyCard = ({landId, area, city, pradesh, propertyId, document, isVe
 							<th>{parseInt(propertyId)}</th>
 							<th>{isVerified}</th>
 							<th><button onClick={() => {
-									verifyTheLand(userAccount,isVerified)}}
+									verifyTheLand(landId)}}
 								>
 									Verify Land
 								</button>
 							</th>
 							<th><button onClick={() => {
-									checkLandVerified(userAccount)}}
+									checkLandVerified(landId)}}
 								>
 									Check
 								</button>

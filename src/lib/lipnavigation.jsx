@@ -6,7 +6,7 @@ export const LIPDASHBOARD_SIDEBAR_LINKS = [
     {
         key: 'dashboard',
         label: 'Dashboard',
-        path: '/',
+        path: '/landInspectorDash',
         icon: <HiOutlineViewGrid />
     },
     {
