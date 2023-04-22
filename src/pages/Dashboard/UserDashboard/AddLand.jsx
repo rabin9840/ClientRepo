@@ -6,15 +6,22 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
+import { useEffect } from 'react';
 
 export default function AddLand() {
-    const {formData, handleChange, addLandTo,checkUserVerified, currentAccount} = useContext(LandRegistrationContext);
+    const {formData, handleChange, addLandTo,checkUserVerified, currentAccount,checkUserVerification} = useContext(LandRegistrationContext);
 
     const handleSubmit = (e) => {
         const {landId,area,city,pradesh,propertyId,document}= formData;
         e.preventDefault();
         addLandTo();
     }
+
+    useEffect(()=>{
+        console.log('INISDE USE EFFECT'+currentAccount);
+        // checkUserVerified(currentAccount);
+        checkUserVerification();
+    },[])
 
     return (
         <Card color="transparent" shadow={false}>
@@ -59,6 +66,8 @@ export default function AddLand() {
                 <Button className="mt-6" onClick={handleSubmit} fullWidth>
                     Add
                 </Button>
+                
+                <Button onClick={checkUserVerification}>check user verified or not</Button>
             </form>
         </Card>
     )

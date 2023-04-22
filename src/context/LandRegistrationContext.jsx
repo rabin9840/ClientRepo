@@ -21,7 +21,8 @@ export const LandRegistrationContext = React.createContext();
 	};
 	
 	export const LandRegistrationProvider = ({children}) => {
-	    const [currentAccount, setCurrentAccount]=useState("");
+	    // const [currentAccount, setCurrentAccount]=useState("");
+		const [currentAccount, setCurrentAccount]=useState(null);
 		const[dataRegistered,setDataRegistered]= useState(false);
 		const [checkAdminButton,setCheckAdminButton]=useState(false);
 		const [isLogOut,setIsLogOut]= useState(false);
@@ -98,6 +99,7 @@ export const LandRegistrationContext = React.createContext();
 	                const account = accounts[0];
 	                setCurrentAccount(account);
 	                console.log(account);
+					console.log(typeof(account));
 	            } else {
 	                console.log("No authorized account found");
 	            }
@@ -116,40 +118,95 @@ export const LandRegistrationContext = React.createContext();
 	        console.log(accounts);
 	        setCurrentAccount(accounts[0]); //set the 1st account as default account
 	
-	        const checkIfAdmin = await landRegistrationContract.isLandInspector(accounts[0]);
-	        // const checkIfAdmin = await testContract.isLandInspector(currentAccount);
+	        // const checkIfAdmin = await landRegistrationContract.isLandInspector(accounts[0]);
+	        // // const checkIfAdmin = await testContract.isLandInspector(currentAccount);
 	
-	        const isAdmin = checkAdmin(checkIfAdmin);
-	        console.log(isAdmin)
-	          if(isAdmin){
-	            setIsAdmin(isAdmin);
-	          }
+	        // const isAdmin = checkAdmin(checkIfAdmin);
+	        // console.log(isAdmin)
+	        //   if(isAdmin){
+	        //     setIsAdmin(isAdmin);
+	        //   }
 	        } catch (error) {
 	          console.log(error);
 	        }
 	      };
+
+		  const getCurrentAccount=async ()=>{
+			 const accounts = await ethereum.request({ method: "eth_accounts" });
+	            console.log("present account adress:"+ accounts[0]); 
+	                const account = accounts[0];
+	                setCurrentAccount(account);
+	                console.log(account);
+					console.log(typeof(account));
+
+
+		  }
 	
-	      const checkAdmin= async()=>{
-	        try {
-	          if (!ethereum) return alert("Please install Metamask to continue");
-	          console.log(currentAccount);
-	          const testContract=getEthereumContract();
-	          console.log("check admin called");
-	          console.log(contractABI);
-	          console.log(contractAddress);
+	    //   const checkAdmin= async()=>{
+	    //     try {
+	    //       if (!ethereum) return alert("Please install Metamask to continue");
+	    //       console.log(currentAccount);
+	    //       const testContract=getEthereumContract();
+	    //       console.log("check admin called");
+	    //       console.log(contractABI);
+	    //       console.log(contractAddress);
 	
-	          // const adminDetail= await testContract.viewLandRegistrator();
-	          // console.log("admin details extracted");
-	          // console.log(adminDetail);
+	    //       // const adminDetail= await testContract.viewLandRegistrator();
+	    //       // console.log("admin details extracted");
+	    //       // console.log(adminDetail);
 	          
+	    //       const checkIfAdmin = await testContract.isLandInspector(currentAccount);
+	    //       // const transactionHash=await testContract.isLandInspector(currentAccount);
+	    //       // setisLoading(true);
+	    //       // console.log(`Loading: ${transactionHash.hash}`)
+	    //       // await transactionHash.wait();
+	    //       // setisLoading(false);
+	    //       // console.log(`Success: ${transactionHash.hash}`)
+		// 	  console.log('check if admin'+checkIfAdmin);
+	    //       if(checkIfAdmin){
+		// 		console.log('IS ADMIN CALLED TRUE');
+	    //         setIsAdmin(true);
+		// 		console.log('inside if checkIFadmin part'+isAdmin);
+				
+	    //       }
+		// 	  setCheckAdminButton(true);
+
+		// 	  //Additional change
+		// 	  return checkIfAdmin;
+	
+	          
+	    //     } catch (error) {
+	    //       console.log(error);
+	          
+	    //     }
+	    //   }
+	
+	      // FUCNTION TO ADD USER
+	      
+		  const checkAdmin= async()=>{
+	        try {
+				checkIfWalletIsConnected();
+				// getCurrentAccount();
+	          if (!ethereum) return alert("Please install Metamask to continue");
+	            // const accounts = await ethereum.request({ method: "eth_accounts" });
+	            // console.log("present account adress:"+ accounts[0]);
+	          
+	           
+	            //     const account = accounts[0];
+	            //     setCurrentAccount(account);
+	            //     console.log(account);
+				// 	console.log(typeof(account));
+				// checkIfWalletIsConnected();
+				
+	      
+	          const testContract=getEthereumContract();
+
+	          console.log("check admin called");
+			  console.log(currentAccount)
 	          const checkIfAdmin = await testContract.isLandInspector(currentAccount);
-	          console.log(checkIfAdmin);
-	          // const transactionHash=await testContract.isLandInspector(currentAccount);
-	          // setisLoading(true);
-	          // console.log(`Loading: ${transactionHash.hash}`)
-	          // await transactionHash.wait();
-	          // setisLoading(false);
-	          // console.log(`Success: ${transactionHash.hash}`)
+
+			// const checkIfAdmin = await testContract.isLandInspector(account);
+
 			  console.log('check if admin'+checkIfAdmin);
 	          if(checkIfAdmin){
 				console.log('IS ADMIN CALLED TRUE');
@@ -157,8 +214,10 @@ export const LandRegistrationContext = React.createContext();
 				console.log('inside if checkIFadmin part'+isAdmin);
 				
 	          }
-			  console.log(isAdmin);
 			  setCheckAdminButton(true);
+
+			  //Additional change
+			  return checkIfAdmin;
 	
 	          
 	        } catch (error) {
@@ -166,9 +225,10 @@ export const LandRegistrationContext = React.createContext();
 	          
 	        }
 	      }
-	
-	      // FUCNTION TO ADD USER
-	      const addUserTo= async ()=>{
+
+
+
+		  const addUserTo= async ()=>{
 	        try {
 	          if (!ethereum) return alert("Please install Metamask to continue");
 	          const {name,age,city,citizenShipNumber,email,document}= userData;
@@ -806,11 +866,16 @@ export const LandRegistrationContext = React.createContext();
 	    useEffect(()=>{
 	        checkIfWalletIsConnected();
 	    },[]);
+
+		// useEffect(()=>{
+	    //     checkIfWalletIsConnected();
+		// 	getCurrentAccount();
+	    // },[currentAccount]);
 	
 	
 	    return(
 	      // <LandRegistrationContext.Provider value={{connectWallet,currentAccount,formData,setFormData,handleChange,sendTransaction,getAllLand}}>
-	      <LandRegistrationContext.Provider value={{checkAdminButton,isUser,isUserVerified,connectWallet,currentAccount,checkAdmin,isAdmin,addUserTo,dataRegistered,formData,userData,setFormData,setUserData,handleChange,handleUserChange, getUserInfo,getUserData,usersInfo,checkUserVerification,checkUserVerified,checkUser,verifyTheUser,handleVerify,addLandTo,getAllLands,getUserAllData,landsInfo,verifyUserLand,checkLand,viewUserInfo,checkPayment,userDetails,setUserDetails,checkLandVerified,verifyTheLand,requestThisLand,getAllLand,approveRequest,requestInfo,getAllRequests,transferLand,getApprovedRequests,isLandTransfer,handleLogOut,isLogOut}}>
+	      <LandRegistrationContext.Provider value={{checkIfWalletIsConnected,getCurrentAccount,checkAdminButton,isUser,isUserVerified,connectWallet,currentAccount,checkAdmin,isAdmin,addUserTo,dataRegistered,formData,userData,setFormData,setUserData,handleChange,handleUserChange, getUserInfo,getUserData,usersInfo,checkUserVerification,checkUserVerified,checkUser,verifyTheUser,handleVerify,addLandTo,getAllLands,getUserAllData,landsInfo,verifyUserLand,checkLand,viewUserInfo,checkPayment,userDetails,setUserDetails,checkLandVerified,verifyTheLand,requestThisLand,getAllLand,approveRequest,requestInfo,getAllRequests,transferLand,getApprovedRequests,isLandTransfer,handleLogOut,isLogOut}}>
 	            {children}
 	        </LandRegistrationContext.Provider>
 	    )
