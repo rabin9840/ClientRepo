@@ -8,7 +8,7 @@ export const UserDASHBOARD_SIDEBAR_LINKS = [
     {
         key: 'udashboard',
         label: 'UDashboard',
-        path: '/',
+        path: '/userDash',
         icon: <HiOutlineViewGrid />
     },
     {

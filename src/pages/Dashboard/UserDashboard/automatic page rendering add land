@@ -6,16 +6,50 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
+import { useEffect } from 'react';
+import { ethers } from 'ethers';
+import { useState } from 'react';
 
 export default function AddLand() {
     const {formData, handleChange, addLandTo,checkUserVerified, currentAccount} = useContext(LandRegistrationContext);
+    console.log( checkUserVerified(currentAccount));
+
+    const [isUserVerified,setisuserverified]=useState(false);
 
     const handleSubmit = (e) => {
         const {landId,area,city,pradesh,propertyId,document}= formData;
         e.preventDefault();
         addLandTo();
     }
+   
 
+    // useEffect( ()=>{
+    //     async function fetchUserVwerified(){
+    //         const isVerified=await checkUserVerified(currentAccount);
+    //         setisuserverified(isVerified);
+
+    //     }
+    //     fetchUserVwerified();
+    // },[currentAccount])
+
+
+
+    // for automatically showing page if verified
+    // (async function() {
+    //     useEffect(() => {
+    //         async function fetchUserVwerified(){
+    //             const isVerified=await checkUserVerified(currentAccount);
+    //             setisuserverified(isVerified);
+    
+    //         }
+    //         fetchUserVwerified();
+    //     }, [currentAccount]);
+    //   })();
+      
+
+
+
+    if(isUserVerified ){
     return (
         <Card color="transparent" shadow={false}>
             <Typography variant="h4" color="blue-gray">
@@ -62,4 +96,15 @@ export default function AddLand() {
             </form>
         </Card>
     )
+    }
+    else{
+        return(
+            <>
+                <h1>Not Verified</h1>
+                <p>You are not verified by the Land Inspector.</p>
+                <p>You can only add land after Land Inspector verifies your account information.</p>
+            </>
+           
+        )
+    }
 }

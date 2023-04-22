@@ -9,6 +9,7 @@ import {
 
 export default function AddLand() {
     const {formData, handleChange, addLandTo,checkUserVerified, currentAccount} = useContext(LandRegistrationContext);
+    console.log( checkUserVerified(currentAccount));
 
     const handleSubmit = (e) => {
         const {landId,area,city,pradesh,propertyId,document}= formData;

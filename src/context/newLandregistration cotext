@@ -49,7 +49,6 @@ export const LandRegistrationContext = React.createContext();
 	    const [isAdmin, setIsAdmin] = useState(false);
 
 		const [isUser, setIsUser] = useState(false);
-		const [isUserVerified, setIsUserVerified] = useState(false);
 	
 	    const [userTransaction, setUserTransaction] = useState([]);
 	
@@ -264,7 +263,6 @@ export const LandRegistrationContext = React.createContext();
 	          const isVerified= await testContract.isVerified(currentAccount);
 	          console.log("verfication check done");
 	          console.log(isVerified);
-			  setIsUserVerified(isVerified);
 	          
 	        } catch (error) {
 	          console.log(error);
@@ -275,24 +273,14 @@ export const LandRegistrationContext = React.createContext();
 	      const checkUserVerified= async(userAddress)=>{
 	        try {
 	        
-	        const isUserVerified= await landRegistrationContract.isVerified(userAddress);
+	            const isUserVerified= await landRegistrationContract.isVerified(userAddress);
 	         console.log(isUserVerified);
 	        //  isVerified=true;
-			return isVerified;
 	        } catch (error) {
 	          console.log(error);
 	          
 	        }
 	      }
-
-
-		  // for without button
-		// const checkUserVerified= async(userAddress)=>{
-	    //     const isUserVerified= await landRegistrationContract.isVerified(userAddress);
-	    //     //  console.log(isUserVerified);
-	    //     //  isVerified=true;
-		// 	return isUserVerified;
-	    //   }
 	
 	      // function to check if current user is admin or users
 	      const checkUser= async()=>{
@@ -810,7 +798,7 @@ export const LandRegistrationContext = React.createContext();
 	
 	    return(
 	      // <LandRegistrationContext.Provider value={{connectWallet,currentAccount,formData,setFormData,handleChange,sendTransaction,getAllLand}}>
-	      <LandRegistrationContext.Provider value={{checkAdminButton,isUser,isUserVerified,connectWallet,currentAccount,checkAdmin,isAdmin,addUserTo,dataRegistered,formData,userData,setFormData,setUserData,handleChange,handleUserChange, getUserInfo,getUserData,usersInfo,checkUserVerification,checkUserVerified,checkUser,verifyTheUser,handleVerify,addLandTo,getAllLands,getUserAllData,landsInfo,verifyUserLand,checkLand,viewUserInfo,checkPayment,userDetails,setUserDetails,checkLandVerified,verifyTheLand,requestThisLand,getAllLand,approveRequest,requestInfo,getAllRequests,transferLand,getApprovedRequests,isLandTransfer,handleLogOut,isLogOut}}>
+	      <LandRegistrationContext.Provider value={{checkAdminButton,isUser,connectWallet,currentAccount,checkAdmin,isAdmin,addUserTo,dataRegistered,formData,userData,setFormData,setUserData,handleChange,handleUserChange, getUserInfo,getUserData,usersInfo,checkUserVerification,checkUserVerified,checkUser,verifyTheUser,handleVerify,addLandTo,getAllLands,getUserAllData,landsInfo,verifyUserLand,checkLand,viewUserInfo,checkPayment,userDetails,setUserDetails,checkLandVerified,verifyTheLand,requestThisLand,getAllLand,approveRequest,requestInfo,getAllRequests,transferLand,getApprovedRequests,isLandTransfer,handleLogOut,isLogOut}}>
 	            {children}
 	        </LandRegistrationContext.Provider>
 	    )
