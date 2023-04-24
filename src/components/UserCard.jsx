@@ -32,11 +32,13 @@ const UserCard = ({name,age,city,citizenShipNumber,email,userAccount,isVerified}
 									Verify User
 								</button>
 							</th>
-							<th><button onClick={() => {
+							<th>
+								{/* <button onClick={() => {
 									checkUserVerified(userAccount)}}
 								>
 									Check
-								</button>
+								</button> */}
+								{isVerified}
 							</th>
 						</tr>
 					</tbody>

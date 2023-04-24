@@ -9,7 +9,7 @@ import {
 import { useEffect } from 'react';
 
 export default function AddLand() {
-    const {formData, handleChange, addLandTo,checkUserVerified, currentAccount,checkUserVerification,getCurrentAccount,isUserVerified} = useContext(LandRegistrationContext);
+    const {formData, handleChange, addLandTo,checkUserVerified, currentAccount,checkUserVerification} = useContext(LandRegistrationContext);
 
     const handleSubmit = (e) => {
         const {landId,area,city,pradesh,propertyId,document}= formData;
@@ -17,20 +17,13 @@ export default function AddLand() {
         addLandTo();
     }
 
-
     useEffect(()=>{
-        async function checkUser(){
-            console.log("inside useeffect"+ await checkUserVerification());
-
-        }
-     checkUser();
-        console.log('is user verfied'+isUserVerified);
-  
+        console.log('INISDE USE EFFECT'+currentAccount);
+        // checkUserVerified(currentAccount);
+        checkUserVerification();
     },[])
 
-    return(
-        <>
-        {isUserVerified &&(
+    return (
         <Card color="transparent" shadow={false}>
             <Typography variant="h4" color="blue-gray">
                 Add Land
@@ -77,18 +70,5 @@ export default function AddLand() {
                 <Button onClick={checkUserVerification}>check user verified or not</Button>
             </form>
         </Card>
-    
-)
-    }
-    { !isUserVerified &&
-        
-            <div>
-                <h1>This operation can only be performed when you are verified</h1>
-            </div>
-        
-    }
-        </>
-
-
     )
 }

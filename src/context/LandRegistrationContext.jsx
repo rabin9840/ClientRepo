@@ -247,34 +247,75 @@ export const LandRegistrationContext = React.createContext();
 	      }
 	
 	      //function to retrieve current user details
-	      const getUserInfo=async()=>{
+	    //   const getUserInfo=async()=>{
+	    //     try {
+	    //       if (!ethereum) return alert("Please install Metamask to continue");
+	    //       console.log("getUserInfo called");
+	    //       const testContract= getEthereumContract();
+	    //       console.log("contract retrieved");
+	    //       console.log(currentAccount);
+	    //       const userDetails= await testContract.getCurrentUserDetails();
+	    //       console.log("userDetails retrieved");
+	    //       console.log(userData);
+		// 	  const isUserVerified= await testContract.isVerified(currentAccount);
+	    //       setUserData(() => ({
+	    //         name: userDetails[0],
+	    //         age:userDetails[1],
+	    //         city:userDetails[2],
+	    //         citizenShipNumber:userDetails[3],
+	    //         email:userDetails[4],
+	    //         document:userDetails[5],
+	    //       }));
+	    //       console.log(userData);
+	    //       console.log("User details:"+userDetails);
+	    //       console.log("from user data"+userData.name);
+	
+	          
+	    //     } catch (error) {
+	    //       console.log(error);
+	          
+	    //     }
+	    //   }
+
+		const getUserInfo=async()=>{
 	        try {
 	          if (!ethereum) return alert("Please install Metamask to continue");
 	          console.log("getUserInfo called");
 	          const testContract= getEthereumContract();
 	          console.log("contract retrieved");
-	          console.log(currentAccount);
+	          
+			  const accounts = await ethereum.request({ method: "eth_accounts" });
+			  console.log("present account adress:"+ accounts[0]); 
+				  const account = accounts[0];
+				  setCurrentAccount(account);
+				  console.log(account);
+
+
 	          const userDetails= await testContract.getCurrentUserDetails();
 	          console.log("userDetails retrieved");
 	          console.log(userData);
-	          setUserData(() => ({
-	            name: userDetails[0],
-	            age:userDetails[1],
-	            city:userDetails[2],
-	            citizenShipNumber:userDetails[3],
-	            email:userDetails[4],
-	            document:userDetails[5],
-	          }));
+			 
+
+			  setUserData(() => ({
+				name: userDetails[0],
+				age:userDetails[1],
+				city:userDetails[2],
+				citizenShipNumber:userDetails[3],
+				email:userDetails[4],
+				document:userDetails[5],
+			  }));
+			  console.log(userData);
+			  console.log("User details:"+userDetails);
+			  console.log("from user data"+userData.name);
 	          console.log(userData);
-	          console.log("User details:"+userDetails);
-	          console.log("from user data"+userData.name);
-	
 	          
 	        } catch (error) {
 	          console.log(error);
 	          
 	        }
 	      }
+
+
 	
 	      // function to get userinformation by admin
 	      async function getUserData(){
@@ -318,13 +359,21 @@ export const LandRegistrationContext = React.createContext();
 	      const checkUserVerification = async()=>{
 	        try {
 	          if (!ethereum) return alert("Please install Metamask to continue");
+			  const accounts = await ethereum.request({ method: "eth_accounts" });
+			  console.log("present account adress:"+ accounts[0]); 
+				  const account = accounts[0];
+				  setCurrentAccount(account);
+				  console.log(account);
+				  
 	          console.log("check user verification function called");
 	          const testContract= getEthereumContract();
 	          console.log("contract retrieved");
-	          const isVerified= await testContract.isVerified(currentAccount);
+	          const isVerified= await testContract.isVerified(account);
 	          console.log("verfication check done");
 	          console.log(isVerified);
 			  setIsUserVerified(isVerified);
+			  //additional change
+			//   return isVerified;
 	          
 	        } catch (error) {
 	          console.log(error);
@@ -338,7 +387,7 @@ export const LandRegistrationContext = React.createContext();
 	        const isUserVerified= await landRegistrationContract.isVerified(userAddress);
 	         console.log(isUserVerified);
 	        //  isVerified=true;
-			return isVerified;
+			return isUserVerified;
 	        } catch (error) {
 	          console.log(error);
 	          
@@ -869,7 +918,6 @@ export const LandRegistrationContext = React.createContext();
 
 		// useEffect(()=>{
 	    //     checkIfWalletIsConnected();
-		// 	getCurrentAccount();
 	    // },[currentAccount]);
 	
 	
