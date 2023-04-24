@@ -35,15 +35,16 @@ export default function Index() {
           <Route path="/user/*" element={<User />} />
 
           <Route path="/landinspectorlogin/*" element={<LandInspectorLogin />} />
-          <Route path="/landInspectorDash" element={<LandRegisterIndex/>} />
+          {/* <Route path="/landInspectorDash" element={<LandRegisterIndex/>} /> */}
+          <Route path="/landInspectorDash/*" element={<LandRegisterIndex/>} />
 
 
           {/* <Route path="/userDash" Component={UserIndex} /> */}
           <Route path="/userDash/*" element={<UserIndex />} />
 
 
-          <Route path="/verifyland" element={<VerifyLand/>} />
-          <Route path="/transferownership" element={<TransferOwnership/>} />
+          {/* <Route path="/verifyland" element={<VerifyLand/>} />
+          <Route path="/transferownership" element={<TransferOwnership/>} /> */}
 
         </Routes>
         {/* </Router> */}

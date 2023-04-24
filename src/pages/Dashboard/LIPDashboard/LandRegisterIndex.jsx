@@ -13,8 +13,8 @@ export default function LandRegisterIndex() {
           <Route path="/" element={<Layout />} >
             <Route index element={<Dashboard />} />
             {/* <Route path='verifyuser' element={<VerifyUser />} /> */}
-            {/* <Route path='verifyland' element={<VerifyLand />} />
-            <Route path='transferownership' element={<TransferOwnership />} /> */}
+            <Route path='verifyland' element={<VerifyLand />} />
+            <Route path='transferownership' element={<TransferOwnership />} />
           </Route>
         </Routes>
       {/* </Router> */}

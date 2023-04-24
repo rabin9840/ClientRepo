@@ -12,13 +12,13 @@ export const LIPDASHBOARD_SIDEBAR_LINKS = [
     {
         key: 'verifyland',
         label: 'Verify Land',
-        path: '/verifyland',
+        path: 'verifyland',
         icon: <BsFillLayersFill />
     },
     {
         key: 'transferownership',
         label: 'Transfer Ownership',
-        path: '/transferownership',
+        path: 'transferownership',
         icon: <BiTransferAlt />
     }
 ]
