@@ -283,14 +283,6 @@ export const LandRegistrationContext = React.createContext();
 	          console.log("getUserInfo called");
 	          const testContract= getEthereumContract();
 	          console.log("contract retrieved");
-	          
-			  const accounts = await ethereum.request({ method: "eth_accounts" });
-			  console.log("present account adress:"+ accounts[0]); 
-				  const account = accounts[0];
-				  setCurrentAccount(account);
-				  console.log(account);
-
-
 	          const userDetails= await testContract.getCurrentUserDetails();
 	          console.log("userDetails retrieved");
 	          console.log(userData);
