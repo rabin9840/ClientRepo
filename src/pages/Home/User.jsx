@@ -45,8 +45,15 @@ const User = () => {
 
     return (
         <>
+        {/* Additional change */}
+        	{!currentAccount && (
+	            <Button size="lg" color="amber" className="flex items-center gap-3 m-15" onClick={connectWallet}>
+					{/* <img src="/src/metamask.svg" alt="metamask" className="h-6 w-6" /> */}
+	            	Connect with Metamask Wallet
+	            </Button>
+	        )}
 
-        { !isAdmin &&
+        { !isAdmin && currentAccount &&
          (           <Card color="transparent" shadow={false} className="content-center">
                     <Typography variant="h4" color="blue-gray">
                         User Registration

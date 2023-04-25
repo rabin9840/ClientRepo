@@ -7,6 +7,7 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import { useEffect } from 'react';
+import NotAuthorized from '../../../components/NotAuthorized';
 
 export default function AddLand() {
     const {formData, handleChange, addLandTo,checkUserVerified, currentAccount,checkUserVerification,getCurrentAccount,isUserVerified} = useContext(LandRegistrationContext);
@@ -82,9 +83,10 @@ export default function AddLand() {
     }
     { !isUserVerified &&
         
-            <div>
-                <h1>This operation can only be performed when you are verified</h1>
-            </div>
+            // <div>
+            //     <h1>This operation can only be performed when you are verified</h1>
+            // </div>
+            <NotAuthorized />
         
     }
         </>

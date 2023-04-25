@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { LandRegistrationContext } from '../../../context/LandRegistrationContext'; 
 import RequestCard from '../../../components/RequestCard';
+import NotAuthorized from '../../../components/NotAuthorized';
 	
 export default  function Approve() {
 	const {getAllRequests, requestInfo,isUserVerified,checkUserVerification} = useContext(LandRegistrationContext);
@@ -42,9 +43,7 @@ export default  function Approve() {
         {
 
             !isUserVerified && (
-                <div>
-                    <h1>Not Authorized</h1>
-                </div>
+                <NotAuthorized />
             )
         }
         </>

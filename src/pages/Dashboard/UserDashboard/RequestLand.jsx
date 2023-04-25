@@ -1,6 +1,7 @@
 import React, { useState, useEffect,useContext } from 'react'
 import {LandRegistrationContext} from '../../../context/LandRegistrationContext'
 import AllLandCard from '../../../components/AllLandCard';
+import NotAuthorized from '../../../components/NotAuthorized';
 
 export default function RequestLand() {
     const {getAllLands,landsInfo,checkUserVerification,isUserVerified,currentAccount} = useContext(LandRegistrationContext);
@@ -57,9 +58,7 @@ export default function RequestLand() {
 {
 
     !isUserVerified && (
-    <div>
-        <h1>Not Authorized</h1>
-    </div>
+        <NotAuthorized />
 )
 }
 

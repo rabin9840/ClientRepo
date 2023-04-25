@@ -34,14 +34,14 @@ export default function LandInspectorLogin() {
 
 
 
-	        <div className="flex items-center gap-4">
+	        <div className="flex items-center justify-center h-screen w-full">
 	        {/* {!currentAccount && (
 	            <button className="app-button_login" onClick={connectWallet}>
 	              Login
 	            </button>
 	        ) } */}
 	        {!currentAccount && (
-	            <Button size="lg" color="amber" className="flex items-center gap-3 m-15" onClick={connectWallet}>
+	            <Button size="lg" color="amber" className="bg-amber-400 hover:bg-amber-500 text-gray-800 font-bold py-4 px-4 rounded flex items-center space-x-4 justify-center" onClick={connectWallet}>
 					{/* <img src="/src/metamask.svg" alt="metamask" className="h-6 w-6" /> */}
 	            	Connect with Metamask Wallet
 	            </Button>
@@ -49,16 +49,28 @@ export default function LandInspectorLogin() {
 	
 	        {(currentAccount) && (
 				<div>
-	            <Button size="lg" color="blue" className="flex items-center gap-3 app-button_login" onClick={checkAdmin}>
+	            {/* <Button size="lg" color="blue" className="flex items-center gap-3 app-button_login" onClick={checkAdmin}>
 	            	<img src="/src/checkmark.svg" alt="checkmark" className="h-6 w-6" />
 					Check if admin
-	            </Button>
+	            </Button> */}
+
+      <Button
+        className="bg-green-400 hover:bg-green-600 text-gray-800 font-bold py-4 px-4 rounded flex items-center space-x-4 justify-center"
+        onClick={checkAdmin}
+      >
+        <img
+          src="/src/checkmark.svg"
+          alt="checkmark"
+          className="h-6 w-6 rounded-full bg-gray-700"
+        />
+        <span>Check if admin</span>
+      </Button>
+    </div>
+
 
 				
-				</div>
-
-
-	        )}
+				
+)}
 {/* 
 			{(currentAccount) && (
 				<div>
