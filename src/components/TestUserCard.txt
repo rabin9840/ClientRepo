@@ -1,0 +1,58 @@
+<div class="mx-auto w-full md:flex">
+  <div class="bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1 mb-4 md:mb-0 md:mr-4">
+    <strong class="text-gray-700 font-medium">User Verification</strong>
+    <div class="border-x border-gray-200 rounded-sm mt-3 md:mt-0 w-full md:flex-row md:overflow-x-auto">
+      <table class="w-full text-gray-700">
+        <thead>
+          <tr class="hidden md:table-row">
+            <th>Name</th>
+            <th>City</th>
+            <th>Citizenship No.</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Action</th>
+            <th>Confirmation Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row md:hidden">
+            <td>Name:</td>
+            <td>{name}</td>
+          </tr>
+          <tr class="table-row md:hidden">
+            <td>City:</td>
+            <td>{city}</td>
+          </tr>
+          <tr class="table-row md:hidden">
+            <td>Citizenship No.:</td>
+            <td>{citizenShipNumber}</td>
+          </tr>
+          <tr class="table-row md:hidden">
+            <td>Email:</td>
+            <td>{email}</td>
+          </tr>
+          <tr class="table-row md:hidden">
+            <td>Age:</td>
+            <td>{parseInt(age)}</td>
+          </tr>
+          <tr class="table-row">
+            <td>Action:</td>
+            <td><button onClick={() => {verifyTheUser(userAccount, isVerified)}}>Verify User</button></td>
+          </tr>
+          {isVerified && (
+          <tr class="table-row">
+            <td>Confirmation Status:</td>
+            <td>True</td>
+          </tr>
+          )}
+          {!isVerified && (
+          <tr class="table-row">
+            <td>Confirmation Status:</td>
+            <td>False</td>
+          </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
