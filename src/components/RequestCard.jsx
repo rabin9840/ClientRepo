@@ -19,7 +19,7 @@ const RequestCard = ({requestId,sellerAddress,buyerAddress,landId,requestStatus}
 					<tbody>
 						<tr>
 							<th>{requestId}</th>
-							<th>{landId}</th>
+							<th>{parseInt(landId)}</th>
 							<th>{buyerAddress}</th>
 							<th><button onClick={() => {
 									approveRequest(requestId)}}

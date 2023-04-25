@@ -12,7 +12,7 @@ const LandCard = ({landId,area,city,pradesh,propertyId,document,isVerified}) => 
 							<th>Pradesh</th>
 							<th>Property ID</th>
                             <th>Document</th>
-							<th>Land Status</th>
+							<th>Land Verified</th>
 						</tr>
 					</thead>
 					<tbody>

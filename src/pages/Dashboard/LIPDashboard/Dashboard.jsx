@@ -17,17 +17,17 @@ export default function Dashboard() {
 		<div>
 			<div>
 				<h1>User Details</h1>
-				<button onClick={getUserData}>User Details</button>
-				<button
+				{/* <button onClick={getUserData}>User Details</button> */}
+				{/* <button
       onClick={getUserData}
       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-100"
-    >
+	  			>
       UserDetails
-    </button>
+    	</button> */}
 			</div>
-			<div>
+			{/* <div>
 				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint enim, modi consectetur dolorum aut, deserunt corporis optio non odio veritatis possimus! Nisi, optio. Enim sunt, laboriosam harum aut adipisci beatae?
-			</div>
+			</div> */}
 			<div>
 				{
             		usersInfo.map((user,i)=>{

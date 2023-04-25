@@ -3,31 +3,68 @@ import {LandRegistrationContext} from '../../../context/LandRegistrationContext'
 import AllLandCard from '../../../components/AllLandCard';
 
 export default function RequestLand() {
-    const {getAllLands,landsInfo} = useContext(LandRegistrationContext);
+    const {getAllLands,landsInfo,checkUserVerification,isUserVerified,currentAccount} = useContext(LandRegistrationContext);
 	//  to load the address when loading the page
 	// remove react strict mode in main jsx or else data would be shown two times
-	useEffect(() => {
+	
+    useEffect(() => {
+        async function checkUser(){
+            await checkUserVerification();
+
+        }
+        checkUser();
 	    getAllLands();
 	}, []);
 
+
     return (
-        <div>
-            <div>
-                <h1>Avaliable Lands</h1>
-                <button onClick={getAllLands}>Available Lands</button>
+        <>
+        {
+            isUserVerified && (
+                <div>
+                <div>
+                    <h1>Avaliable Lands</h1>
+                    <button onClick={getAllLands}>Available Lands</button>
+                </div>
+                <div>
+                    {
+                        landsInfo.map((land, i) => {
+                            // to view unverified data
+                            // the current user should not be the owner of the availble land to perform selling transaction
+                            console.log(land.isVerified);
+                            console.log(typeof(land.isVerified));
+                            
+                            console.log('landOwner address'+land.landOwnerAddress);
+                            console.log(currentAccount);
+                            console.log(land.landOwnerAddress===currentAccount);
+                            
+                            // only show the availabe land when it is verified by admin
+                            // and only to the users who donot own that land. 
+                            if(land.isVerified==="true" && (land.landOwnerAddress!=currentAccount))
+                            {
+                                return <AllLandCard key={i}{...land}/>
+                            }
+                         
+    
+                           
+                        })
+                    }
+                </div>
             </div>
-            <div>
-                {
-                    landsInfo.map((land, i) => {
-                        // to view unverified data
-                        // the current user should not be the owner of the availble land to perform selling transaction
-                        if(land.isVerified)
-                        {
-                            return <AllLandCard key={i}{...land}/>
-                        }
-                    })
-                }
-            </div>
-        </div>
+            )
+        }
+
+{
+
+    !isUserVerified && (
+    <div>
+        <h1>Not Authorized</h1>
+    </div>
+)
+}
+
+
+        </>
+
     )
 }

@@ -575,6 +575,10 @@ export const LandRegistrationContext = React.createContext();
 	              console.log(parseInt(landDetails[0]));
 	              const isLandVerified= await testContract.isLandVerified(i);
 	              const landAccount= await testContract.getLandOwner(i);
+				  
+				  //additional
+				  const actualOwnerAddress= landAccount.toLowerCase();
+
 	              console.log("land owner address"+landAccount);
 	              // may be needed to change landOwner Address to lower case
 	              const structLandInfo= {
@@ -585,7 +589,8 @@ export const LandRegistrationContext = React.createContext();
 	                  propertyId:parseInt(landDetails[4]),
 	                  document:landDetails[5],
 	                  isVerified:isLandVerified.toString(),
-	                  landOwnerAddress:landAccount
+	                //   landOwnerAddress:landAccount
+					landOwnerAddress:actualOwnerAddress
 	              }
 	              console.log(structLandInfo);
 	              setLandsInfo((prev)=>[...prev, structLandInfo])

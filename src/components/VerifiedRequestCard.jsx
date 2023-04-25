@@ -14,15 +14,16 @@ const VerifiedRequestCard = ({requestId,sellerAddress,buyerAddress,landId,reques
 							<th>Land ID</th>
 							<th>Buyer Address</th>
 							<th>Request Status</th>
+							<th>Is Land Transferred</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<th>{requestId}</th>
-							<th>{landId}</th>
+							<th>{parseInt(landId)}</th>
 							<th>{buyerAddress}</th>
-							<th>{requestStatus.toSpring()}</th>
+							<th>{requestStatus.toString()}</th>
 							<th>{isTransfered.toString()}</th>
 							<th><button 
 									onClick={() => { 

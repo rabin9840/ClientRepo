@@ -25,7 +25,7 @@ const AllLandCard=({landId,area,city,pradesh,propertyId,document,isVerified,land
 					<tbody>
 						<tr>
 							<th>{landId}</th>
-							<th>{areparseInt(area)}</th>
+							<th>{parseInt(area)}</th>
 							<th>{city}</th>
 							<th>{pradesh}</th>
 							<th>{parseInt(propertyId)}</th>

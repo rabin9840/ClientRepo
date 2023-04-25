@@ -3,25 +3,51 @@ import { LandRegistrationContext } from '../../../context/LandRegistrationContex
 import RequestCard from '../../../components/RequestCard';
 	
 export default  function Approve() {
-	const {getAllRequests, requestInfo} = useContext(LandRegistrationContext);
+	const {getAllRequests, requestInfo,isUserVerified,checkUserVerification} = useContext(LandRegistrationContext);
 	
+    useEffect(()=>{
+        async function checkUser(){
+            await checkUserVerification();
+
+        }
+     checkUser();
+     getAllRequests();
+
+  
+    },[])
 	return (
-	    <div>
-            <div>
-                <h1>Avaliable Request of Land</h1>
-                <button onClick={getAllRequests}>Available Requests</button>
+        <>
+        {
+            isUserVerified && (
+                <div>
+                <div>
+                    <h1>Avaliable Request of Land</h1>
+                    <button onClick={getAllRequests}>Available Requests</button>
+                </div>
+                <div>
+                    {
+                        requestInfo.map((request, i) => {
+                            // to view unverified data
+                            if(!request.requestStatus)
+                            {
+                                return <RequestCard key={i}{...request}/>
+                            }
+                        })
+                    }
+                </div>
             </div>
-            <div>
-                {
-                    requestInfo.map((land, i) => {
-                        // to view unverified data
-                        if(!request.requestStatus)
-                        {
-                            return <RequestCard key={i}{...request}/>
-                        }
-                    })
-                }
-            </div>
-        </div>
+            )
+        }
+
+        {
+
+            !isUserVerified && (
+                <div>
+                    <h1>Not Authorized</h1>
+                </div>
+            )
+        }
+        </>
+
 	);
 }
