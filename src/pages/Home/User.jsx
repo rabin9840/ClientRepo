@@ -91,7 +91,7 @@ const User = () => {
                                 label="Email"
                                 onChange={handleUserChange}
                             />
-                            <Input
+                            {/* <Input
                                 type="text"
                                 name="panNum"
                                 label="Pan Number"
@@ -102,7 +102,7 @@ const User = () => {
                                 name="surveyNumber"
                                 label="Survey Number"
                                 onChange={handleUserChange}
-                            />
+                            /> */}
                         </div>
                         <Button className="mt-6" onClick={checkAdmin} fullWidth>
                             Check Admin

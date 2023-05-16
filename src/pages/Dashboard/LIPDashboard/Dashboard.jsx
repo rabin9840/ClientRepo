@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { LandRegistrationContext } from '../../../context/LandRegistrationContext';
 import UserCard from '../../../components/UserCard';
+import './styles/index.css'
 
 var userTable=[];
 var usersAddresses=[];
@@ -13,10 +14,11 @@ export default function Dashboard() {
 	    getUserData();
 	}, []);
 
+
 	return (
 		<div>
 			<div>
-				<h1>User Details</h1>
+				<h1 className='headingStyle'>User Details</h1>
 				{/* <button onClick={getUserData}>User Details</button> */}
 				{/* <button
       onClick={getUserData}
