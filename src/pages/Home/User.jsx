@@ -8,6 +8,8 @@ import {
     Typography,
 } from "@material-tailwind/react";
 
+import { useState } from "react";
+
 
 const User = () => {
     const {connectWallet, isAdmin,currentAccount,setIsAdmin} = useContext(LandRegistrationContext);
@@ -28,13 +30,25 @@ const User = () => {
     //     }
        
     //   }
+    const [error, setError] = useState('');
 
     const handleUserSubmit = (e) => {
         const {name, age, city, citizenShipNumber, email, document } = userData;
         e.preventDefault();
         console.log(userData);
+        if (name === '' || city === '' || citizenShipNumber == '' || email === '') {
+            setError("Please fill out remaining form");
+            
+        }
+        else if(age <= 18) {
+            setError("Age should be greater than 18");
+        }
+        else {
             addUserTo();
             console.log(userData);
+            
+        }
+            
       }
 
 
@@ -65,31 +79,37 @@ const User = () => {
                                 type="text"
                                 name="name"
                                 label="Name"
-                                onChange={handleUserChange}
+                            onChange={handleUserChange}
+                            required
                             />
                             <Input
                                 type="number"
                                 name="age"
                                 label="Age"
-                                onChange={handleUserChange}
+                            onChange={handleUserChange}
+                            min="19"
+                            required
                             />
                             <Input
                                 type="text"
                                 name="city"
                                 label="City"
-                                onChange={handleUserChange}
+                            onChange={handleUserChange}
+                            required
                             />
                             <Input
                                 type="text"
                                 name="citizenShipNumber"
                                 label="Citizenship Number"
-                                onChange={handleUserChange}
+                            onChange={handleUserChange}
+                            required
                             />
                             <Input
                                 type="email"
                                 name="email"
                                 label="Email"
-                                onChange={handleUserChange}
+                            onChange={handleUserChange}
+                            required
                             />
                             {/* <Input
                                 type="text"
@@ -104,11 +124,12 @@ const User = () => {
                                 onChange={handleUserChange}
                             /> */}
                         </div>
-                        <Button className="mt-6" onClick={checkAdmin} fullWidth>
+                        <Button className="mt-6" onClick={checkAdmin} fullWidth type="submit">
                             Check Admin
-                        </Button>
+                    </Button>
+                    {error && <p>{error}</p>}
                         {checkAdminButton && !isAdmin &&(
-                        <Button className="mt-6" onClick={handleUserSubmit} fullWidth>
+                        <Button className="mt-6" onClick={handleUserSubmit} fullWidth type="submit">
                             Register
                         </Button>
                         )
