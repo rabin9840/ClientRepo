@@ -48,6 +48,7 @@ const User = () => {
             console.log(userData);
             
         }
+
             
       }
 
@@ -125,12 +126,12 @@ const User = () => {
                                 onChange={handleUserChange}
                             /> */}
                         </div>
-                        <Button className="mt-6" onClick={checkAdmin} fullWidth type="submit">
+                        <Button className="mt-6" onClick={checkAdmin} fullWidth>
                             Check Admin
                     </Button>
                     {error && <p>{error}</p>}
                         {checkAdminButton && !isAdmin &&(
-                        <Button className="mt-6" onClick={handleUserSubmit} fullWidth type="submit">
+                        <Button className="mt-6" onClick={handleUserSubmit} fullWidth>
                             Register
                         </Button>
                         )
