@@ -54,8 +54,8 @@ const User = () => {
 	        )}
 
         { !isAdmin && currentAccount &&
-         (           <Card color="transparent" shadow={false} className="content-center">
-                    <Typography variant="h4" color="blue-gray">
+         (           <Card color="transparent" shadow={false} className="content-center form-style">
+                    <Typography variant="h4" color="blue-gray" background-color="black" className="heading-top">
                         User Registration
                     </Typography>
                     
@@ -119,7 +119,7 @@ const User = () => {
                     )}
                     </form>
 
-                    <div>
+                    <div className="login-button">
                         
                     <Button className="mt-6" onClick={checkUser} fullWidth>
                             Login
