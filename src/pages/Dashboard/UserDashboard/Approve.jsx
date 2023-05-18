@@ -12,7 +12,7 @@ export default  function Approve() {
 
         }
      checkUser();
-     getAllRequests();
+    //  getAllRequests();
 
   
     },[])

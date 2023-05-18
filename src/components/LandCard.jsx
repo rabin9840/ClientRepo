@@ -1,7 +1,7 @@
 const LandCard = ({landId,area,city,pradesh,propertyId,document,isVerified}) => {
     return (
         <div className="bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1">
-			<strong className="text-gray-700 font-medium">Land Verification</strong>
+			<strong className="text-gray-700 font-medium">Land Information</strong>
 			<div className="border-x border-gray-200 rounded-sm mt-3">
 				<table className="w-full text-gray-700">
 					<thead>
@@ -11,7 +11,7 @@ const LandCard = ({landId,area,city,pradesh,propertyId,document,isVerified}) => 
 							<th>City</th>
 							<th>Pradesh</th>
 							<th>Property ID</th>
-                            <th>Document</th>
+                            {/* <th>Document</th> */}
 							<th>Land Verified</th>
 						</tr>
 					</thead>
@@ -22,7 +22,7 @@ const LandCard = ({landId,area,city,pradesh,propertyId,document,isVerified}) => 
 							<th>{city}</th>
 							<th>{pradesh}</th>
 							<th>{parseInt(propertyId)}</th>
-							<th>{document}</th>
+							{/* <th>{document}</th> */}
                             <th>{isVerified}</th>
 						</tr>
 					</tbody>

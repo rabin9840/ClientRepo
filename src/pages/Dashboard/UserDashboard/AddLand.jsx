@@ -63,19 +63,19 @@ export default function AddLand() {
                         label="Property ID"
                         onChange={handleChange}
                     />
-                    <Input
+                    {/* <Input
                         type="file"
                         name="document"
                         label="Document"
                         onChange={handleChange}
-                    />
+                    /> */}
                 </div>
                 
                 <Button className="mt-6" onClick={handleSubmit} fullWidth>
                     Add
                 </Button>
                 
-                <Button onClick={checkUserVerification}>check user verified or not</Button>
+                {/* <Button onClick={checkUserVerification}>check user verified or not</Button> */}
             </form>
         </Card>
     

@@ -6,12 +6,17 @@ import NotAuthorized from '../../../components/NotAuthorized';
 export default function MyLands() {
     const { getAllLand, landsInfo,checkUserVerification,isUserVerified} = useContext(LandRegistrationContext);	   
 	useEffect(() => {
+        // async function getUserLands(){
+        //     await checkUserVerification();
+        // }
         async function checkUser(){
             await checkUserVerification();
         }
         checkUser();
+        // checkUserVerification();
+      
         
-	    getAllLand();
+	    // getAllLand();
 	},[]);
 
     return (

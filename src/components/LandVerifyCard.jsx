@@ -15,10 +15,10 @@ const LandVerifyCard = ({landId, area, city, pradesh, propertyId, document, isVe
 							<th>City</th>
 							<th>Pradesh</th>
 							<th>Property ID</th>
-                            <th>Document</th>
-							<th>Land Status</th>
+                            {/* <th>Document</th> */}
+							{/* <th>Land Status</th> */}
 							<th>Action</th>
-							<th>Confirmation Status</th>
+							{/* <th>Confirmation Status</th> */}
 						</tr>
 					</thead>
 					<tbody>
@@ -28,19 +28,19 @@ const LandVerifyCard = ({landId, area, city, pradesh, propertyId, document, isVe
 							<th>{city}</th>
 							<th>{pradesh}</th>
 							<th>{parseInt(propertyId)}</th>
-							<th>{isVerified}</th>
+							{/* <th>{isVerified}</th> */}
 							<th><button onClick={() => {
 									verifyTheLand(landId)}}
 								>
 									Verify Land
 								</button>
 							</th>
-							<th><button onClick={() => {
+							{/* <th><button onClick={() => {
 									checkLandVerified(landId)}}
 								>
 									Check
 								</button>
-							</th>
+							</th> */}
 						</tr>
 					</tbody>
             	</table>

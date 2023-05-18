@@ -16,7 +16,7 @@ const AllLandCard=({landId,area,city,pradesh,propertyId,document,isVerified,land
 							<th>City</th>
 							<th>Pradesh</th>
 							<th>Property ID</th>
-                            <th>Document</th>
+                            {/* <th>Document</th> */}
 							<th>Land Status</th>
 							<th>Land Owner Acc.</th>
 							<th>Action</th>
@@ -29,7 +29,7 @@ const AllLandCard=({landId,area,city,pradesh,propertyId,document,isVerified,land
 							<th>{city}</th>
 							<th>{pradesh}</th>
 							<th>{parseInt(propertyId)}</th>
-                            <th>{document}</th>
+                            {/* <th>{document}</th> */}
 							<th>{isVerified}</th>
                             <th>{landOwnerAddress}</th>
 							<th><button onClick={() => {

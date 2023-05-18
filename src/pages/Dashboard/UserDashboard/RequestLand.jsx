@@ -4,7 +4,7 @@ import AllLandCard from '../../../components/AllLandCard';
 import NotAuthorized from '../../../components/NotAuthorized';
 
 export default function RequestLand() {
-    const {getAllLands,landsInfo,checkUserVerification,isUserVerified,currentAccount} = useContext(LandRegistrationContext);
+    const { getAllLands, allLandsInfo,checkUserVerification,isUserVerified,currentAccount} = useContext(LandRegistrationContext);
 	//  to load the address when loading the page
 	// remove react strict mode in main jsx or else data would be shown two times
 	
@@ -14,7 +14,7 @@ export default function RequestLand() {
 
         }
         checkUser();
-	    getAllLands();
+	    // getAllLands();
 	}, []);
 
 
@@ -29,7 +29,7 @@ export default function RequestLand() {
                 </div>
                 <div>
                     {
-                        landsInfo.map((land, i) => {
+                        allLandsInfo.map((land, i) => {
                             // to view unverified data
                             // the current user should not be the owner of the availble land to perform selling transaction
                             console.log(land.isVerified);
