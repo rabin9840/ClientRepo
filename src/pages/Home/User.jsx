@@ -69,12 +69,13 @@ const User = () => {
 
         { !isAdmin && currentAccount &&
          (           <Card color="transparent" shadow={false} className="content-center form-style">
-                    <Typography variant="h4" color="blue-gray" background-color="black" className="heading-top">
+                    <Typography variant="h4" className="heading-top">
                         User Registration
                     </Typography>
                     
                     <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-                        <div className="mb-4 flex flex-col gap-6">
+                    <div className="mb-4 flex flex-col gap-6">
+                        <span>New User</span>
                             <Input
                                 type="text"
                                 name="name"
@@ -140,7 +141,8 @@ const User = () => {
                     )}
                     </form>
 
-                    <div className="login-button">
+                <div className="login-button">
+                    <span>If User Already Registered</span>
                         
                     <Button className="mt-6" onClick={checkUser} fullWidth>
                             Login

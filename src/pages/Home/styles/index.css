@@ -14,6 +14,7 @@
 .heading-top{
     padding: 15px 0;
     color:blue-gray;
+    font-size: 25px;
 }
 
 form{
@@ -21,7 +22,7 @@ form{
     padding: auto;
     border: 5px solid black;
     border-radius: 5%;
-    padding:1rem
+    padding:2rem;
 }
 
 .login-button{
@@ -34,4 +35,12 @@ Input{
     padding: 10px;
     border: 1px solid black;
     width: 100%;
+}
+
+Button{
+    border-radius: 4px;
+}
+
+span{
+    font-size:20px;
 }
