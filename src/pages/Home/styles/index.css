@@ -3,3 +3,35 @@
     color: white;
     margin: 150px;
 }
+
+.form-style{
+    text-align: center;
+    font-weight: bold;
+
+
+}
+
+.heading-top{
+    padding: 15px 0;
+    color:blue-gray;
+}
+
+form{
+    margin: auto;
+    padding: auto;
+    border: 5px solid black;
+    border-radius: 5%;
+    padding:1rem
+}
+
+.login-button{
+    width: 20%;
+    margin: auto;
+}
+
+Input{
+    border-radius: 4px;
+    padding: 10px;
+    border: 1px solid black;
+    width: 100%;
+}
