@@ -2,6 +2,7 @@ import React, { useState, useEffect,useContext } from 'react'
 import {LandRegistrationContext} from '../../../context/LandRegistrationContext'
 import AllLandCard from '../../../components/AllLandCard';
 import NotAuthorized from '../../../components/NotAuthorized';
+import './styles/index.css'
 
 export default function RequestLand() {
     const { getAllLands, allLandsInfo,checkUserVerification,isUserVerified,currentAccount} = useContext(LandRegistrationContext);
@@ -24,8 +25,8 @@ export default function RequestLand() {
             isUserVerified && (
                 <div>
                 <div>
-                    <h1>Avaliable Lands</h1>
-                    <button onClick={getAllLands}>Available Lands</button>
+                    <h1 className='text-3xl font-bold mb-4'>Avaliable Lands</h1>
+                            <button onClick={getAllLands} className='bold buttonStyle'>Available Lands</button>
                 </div>
                 <div>
                     {

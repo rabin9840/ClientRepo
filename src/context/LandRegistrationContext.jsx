@@ -835,7 +835,8 @@ export const LandRegistrationContext = React.createContext();
 	    const jobTransferLand= await landRegistrationContract.LandOwnershipTransfer(landId,buyerAddress);
 	    // to set transfer of given request to true
 	    const transferSuccessful= await landRegistrationContract.checkTransfer(requestId);
-	    console.log("land Transfer successful");
+		  console.log("land Transfer successful");
+		//   setIsLandTransfered(true);
 	
 	}
 	

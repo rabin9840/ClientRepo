@@ -33,7 +33,7 @@ export default function AddLand() {
         <>
         {isUserVerified &&(
         <Card color="transparent" shadow={false}>
-            <Typography variant="h4" color="blue-gray">
+            <Typography variant="h4" color="blue-gray" className='text-3xl font-bold mb-4'>
                 Add Land
             </Typography>
             
