@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import { LandRegistrationContext } from '../context/LandRegistrationContext'; 
+import "./styles/index.css"
 
 const AllLandCard=({landId,area,city,pradesh,propertyId,document,isVerified,landOwnerAddress}) => {
 	const {requestThisLand}=  useContext(LandRegistrationContext);
@@ -32,7 +33,7 @@ const AllLandCard=({landId,area,city,pradesh,propertyId,document,isVerified,land
                             {/* <th>{document}</th> */}
 							<th>{isVerified}</th>
                             <th>{landOwnerAddress}</th>
-							<th><button onClick={() => {
+							<th><button className="button-styles" onClick={() => {
 									requestThisLand(landId,landOwnerAddress)}}
 								>
 									Request Land

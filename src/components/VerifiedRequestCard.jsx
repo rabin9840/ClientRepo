@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import { LandRegistrationContext } from '../context/LandRegistrationContext'; 
+import "./styles/index.css"
 
 const VerifiedRequestCard = ({requestId,sellerAddress,buyerAddress,landId,requestStatus,isTransfered}) => {
     const {transferLand}= useContext(LandRegistrationContext);
@@ -25,7 +26,7 @@ const VerifiedRequestCard = ({requestId,sellerAddress,buyerAddress,landId,reques
 							<th>{buyerAddress}</th>
 							<th>{requestStatus.toString()}</th>
 							<th>{isTransfered.toString()}</th>
-							<th><button 
+							<th><button className="button-styles"
 									onClick={() => { 
 										transferLand(landId, buyerAddress)
 									}}
