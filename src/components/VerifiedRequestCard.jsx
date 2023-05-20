@@ -11,29 +11,64 @@ const VerifiedRequestCard = ({requestId,sellerAddress,buyerAddress,landId,reques
 				<table className="w-full text-gray-700">
 					<thead>
 						<tr>
-							<th>Request ID</th>
-							<th>Land ID</th>
-							<th>Buyer Address</th>
-							<th>Request Status</th>
-							<th>Is Land Transferred</th>
-							<th>Action</th>
+							<th className="hidden md:table-cell">Request ID</th>
+							<th className="hidden md:table-cell">Land ID</th>
+							<th className="hidden md:table-cell">Buyer Address</th>
+							<th className="hidden md:table-cell">Request Status</th>
+							<th className="hidden md:table-cell">Is Land Transferred</th>
+							<th className="hidden md:table-cell">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th>{requestId}</th>
-							<th>{parseInt(landId)}</th>
-							<th>{buyerAddress}</th>
-							<th>{requestStatus.toString()}</th>
-							<th>{isTransfered.toString()}</th>
-							<th><button className="button-styles"
+							<td className="hidden md:table-cell">{requestId}</td>
+							<td className="hidden md:table-cell">{parseInt(landId)}</td>
+							<td className="hidden md:table-cell">{buyerAddress}</td>
+							<td className="hidden md:table-cell">{requestStatus.toString()}</td>
+							<td className="hidden md:table-cell">{isTransfered.toString()}</td>
+							<td className="hidden md:table-cell">
+								<button className="button-styles"
 									onClick={() => { 
 										transferLand(landId, buyerAddress)
 									}}
 								>
 									Transfer
 								</button>
-							</th>
+							</td>
+						</tr>
+						<tr className="md:hidden">
+                            <td>Request ID</td>
+                            <td>{requestId}</td>
+                        </tr>
+                        <tr className="md:hidden">
+                            <td>Land ID</td>
+                            <td>{parseInt(landId)}</td>
+                        </tr>
+                        <tr className="md:hidden">
+                            <td>Buyer Address</td>
+							<td>{buyerAddress}</td>
+						</tr>
+						<tr className="md:hidden">
+                            <td>Request Status</td>
+							<td>{requestStatus.toString()}</td>
+						</tr>
+
+						<tr className="md:hidden">
+                            <td>Is Land Transferred</td>
+							<td>{isTransfered.toString()}</td>
+						</tr>
+
+						<tr className="md:hidden">
+                            <td>Action</td>
+							<td>
+							<button className="button-styles"
+									onClick={() => { 
+										transferLand(landId, buyerAddress)
+									}}
+								>
+									Transfer
+								</button>
+							</td>
 						</tr>
 					</tbody>
             	</table>
