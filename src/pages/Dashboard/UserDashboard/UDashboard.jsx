@@ -28,34 +28,69 @@ export default function UDashboard() {
 				<table className="w-full text-gray-700">
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>City</th>
-							<th>Citizenship No.</th>
-							<th>Email</th>
-							<th>Verification Status</th>
+							<th className="hidden md:table-cell">Name</th>
+							<th className="hidden md:table-cell">City</th>
+							<th className="hidden md:table-cell">Citizenship No.</th>
+							<th className="hidden md:table-cell">Email</th>
+							<th className="hidden md:table-cell">Verification Status</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th>{userData.name}</th>
-							<th>{userData.city}</th>
-							<th>{userData.citizenShipNumber}</th>
-							<th>{userData.email}</th>
+							<th className="hidden md:table-cell">{userData.name}</th>
+							<th className="hidden md:table-cell">{userData.city}</th>
+							<th className="hidden md:table-cell">{userData.citizenShipNumber}</th>
+							<th className="hidden md:table-cell">{userData.email}</th>
 							{
 								isUserVerified && (
-									<th>Verification Done</th>
+									<th className="hidden md:table-cell">Verification Done</th>
 
 								)
 							}
 
 {
 								!isUserVerified && (
-									<th>Verification Not Done</th>
+									<th className="hidden md:table-cell">Verification Not Done</th>
 
 								)
 							}
 							
 						</tr>
+
+						<tr className="md:hidden">
+                            <td>Name</td>
+                            <td>{userData.name}</td>
+                        </tr>
+                        <tr className="md:hidden">
+                            <td>City</td>
+                            <td>{userData.city}</td>
+                        </tr>
+                        <tr className="md:hidden">
+                            <td>CitizenShip No.</td>
+                            <td>{userData.citizenShipNumber}</td>
+						</tr>
+						<tr className="md:hidden">
+                            <td>Email</td>
+                            <td>{userData.email}</td>
+                        </tr>
+                        <tr className="md:hidden">
+                            <td>Verification Status</td>
+                            <td>{
+								isUserVerified && (
+									<td>Verification Done</td>
+
+								)
+							}
+
+{
+								!isUserVerified && (
+									<td>Verification Not Done</td>
+
+								)
+								}
+							</td>
+                        </tr>
+                      
 					</tbody>
             	</table>
 			</div>

@@ -1,0 +1,15 @@
+.landCard{
+    margin: auto;
+    padding: auto;
+
+}
+@media screen and (max-width:600px) {
+
+    .tableHead >tr{
+        background-color: blue;
+        table-layout: auto;
+
+    }
+    
+}
+/* bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1  */

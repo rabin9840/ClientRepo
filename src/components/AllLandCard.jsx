@@ -12,34 +12,75 @@ const AllLandCard=({landId,area,city,pradesh,propertyId,document,isVerified,land
 				<table className="w-full text-gray-700">
 					<thead>
 						<tr>
-							<th>Land ID</th>
-							<th>Area</th>
-							<th>City</th>
-							<th>Pradesh</th>
-							<th>Property ID</th>
-                            {/* <th>Document</th> */}
-							<th>Land Status</th>
-							<th>Land Owner Acc.</th>
-							<th>Action</th>
+							<th className="hidden md:table-cell">Land ID</th>
+							<th className="hidden md:table-cell">Area</th>
+							<th className="hidden md:table-cell">City</th>
+							<th className="hidden md:table-cell">Pradesh</th>
+							<th className="hidden md:table-cell">Property ID</th>
+                            {/* className="hidden md:table-cell" <th>Document</th> */}
+							<th className="hidden md:table-cell">Land Status</th>
+							<th className="hidden md:table-cell">Land Owner Acc.</th>
+							<th className="hidden md:table-cell">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th>{landId}</th>
-							<th>{parseInt(area)}</th>
-							<th>{city}</th>
-							<th>{pradesh}</th>
-							<th>{parseInt(propertyId)}</th>
-                            {/* <th>{document}</th> */}
-							<th>{isVerified}</th>
-                            <th>{landOwnerAddress}</th>
-							<th><button className="button-styles" onClick={() => {
+							<td className="hidden md:table-cell">{landId}</td>
+							<td className="hidden md:table-cell">{parseInt(area)}</td>
+							<td className="hidden md:table-cell">{city}</td>
+							<td className="hidden md:table-cell">{pradesh}</td>
+							<td className="hidden md:table-cell">{parseInt(propertyId)}</td>
+                            {/* className="hidden md:table-cell" <th>{document}</th> */}
+							<td className="hidden md:table-cell">{isVerified}</td>
+                            <td className="hidden md:table-cell">{landOwnerAddress}</td>
+							<td className="hidden md:table-cell"><button className="button-styles" onClick={() => {
 									requestThisLand(landId,landOwnerAddress)}}
 								>
 									Request Land
 								</button>
-							</th>
+							</td>
 						</tr>
+						<tr className="md:hidden">
+                            <td>Land ID</td>
+                            <td>{landId}</td>
+                        </tr>
+                        <tr className="md:hidden">
+                            <td>Area</td>
+                            <td>{parseInt(area)}</td>
+                        </tr>
+                        <tr className="md:hidden">
+                            <td>City</td>
+                            <td>{city}</td>
+                        </tr>
+                        <tr className="md:hidden">
+                            <td>Pradesh</td>
+                            <td>{pradesh}</td>
+                        </tr>
+                        <tr className="md:hidden">
+                            <td>Property ID</td>
+                            <td>{parseInt(propertyId)}</td>
+                        </tr>
+                        {/* <tr className="md:hidden">
+                            <td>Document</td>
+                            <td>{document}</td>
+                        </tr> */}
+                        <tr className="md:hidden">
+                            <td>Land Status</td>
+                            <td>{isVerified}</td>
+                        </tr>
+
+						<tr className="md:hidden">
+                            <td>Land Owner Account</td>
+                            <td>{landOwnerAddress}</td>
+                        </tr>
+						<tr className="md:hidden">
+                            <td>Action</td>
+                            <td><button className="button-styles" onClick={() => {
+									requestThisLand(landId,landOwnerAddress)}}
+								>
+									Request Land
+								</button></td>
+                        </tr>
 					</tbody>
             	</table>
 			</div>
