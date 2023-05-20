@@ -6,9 +6,9 @@ import './styles/index.css'
 export default function VerifyLand() {
 	const {getUserAllData, landsInfo} = useContext(LandRegistrationContext);
 	// remove react strict mode in main jsx or else data would be shown two times
-	useEffect(() => {
-	    getUserAllData();
-	}, []);
+	// useEffect(() => {
+	//     getUserAllData();
+	// }, []);
 
 	const buttonStyle = {
 		marginLeft:"45%",
